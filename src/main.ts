@@ -4,7 +4,7 @@ import cors from 'cors'
 
 const app = express()
 
-app.use(cors())
+app.use(cors({ origin: process.env.APP_URL }))
 
 app.get('/api', (_, res) => {
   res.json({ title: 'Hello World' })
