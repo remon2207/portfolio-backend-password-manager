@@ -2,3 +2,5 @@
 /dist/
 
 /vite.config.ts
+
+/prisma/seed.ts
