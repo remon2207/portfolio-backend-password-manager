@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int            @id @default(autoincrement())
+  name         String         @unique @db.VarChar()
+  email        String         @unique @db.VarChar()
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @default(now()) @updatedAt @map("updated_at")
+  PasswordInfo PasswordInfo[]
+
+  @@map("users")
+}
+
+model PasswordInfo {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  service     String   @db.VarChar()
+  email       String   @db.VarChar()
+  name        String   @db.VarChar()
+  password    String   @db.VarChar()
+  isTwoFactor Boolean  @default(false) @map("is_two_factor")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@map("passwords_info")
+}
