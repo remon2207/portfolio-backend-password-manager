@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { VitePluginNode } from 'vite-plugin-node'
+import { resolve } from 'path'
 
 export default defineConfig({
   // ...vite configures
@@ -59,5 +60,10 @@ export default defineConfig({
     //   'class-validator',
     //   'fastify-swagger',
     // ],
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
   },
 })

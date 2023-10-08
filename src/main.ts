@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-import { router as users } from './users'
+import { router as users } from '@/users'
 
 const app = express()
 
