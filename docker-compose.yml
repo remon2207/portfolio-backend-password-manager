@@ -10,4 +10,4 @@ services:
       - '${PORT:-10000}:10000'
     environment:
       NODE_ENV: 'development'
-    command: 'npm run dev'
+    command: 'pnpm dev'

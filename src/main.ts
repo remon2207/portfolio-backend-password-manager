@@ -1,10 +1,12 @@
 import 'dotenv/config'
-import express from 'express'
-import cors from 'cors'
 import { router as users } from '@/users'
+import cors from 'cors'
+import express from 'express'
 
 const app = express()
 
+app.use(express.json())
+app.use(express.urlencoded())
 app.use(cors({ origin: process.env.APP_URL }))
 
 app.use('/api/users', users)
